@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Multi-Turn-Chatbot/static/css/main.cef3e25d.css",
-    "main.js": "/Multi-Turn-Chatbot/static/js/main.d76a8639.js",
+    "main.js": "/Multi-Turn-Chatbot/static/js/main.cb766519.js",
     "index.html": "/Multi-Turn-Chatbot/index.html",
     "main.cef3e25d.css.map": "/Multi-Turn-Chatbot/static/css/main.cef3e25d.css.map",
-    "main.d76a8639.js.map": "/Multi-Turn-Chatbot/static/js/main.d76a8639.js.map"
+    "main.cb766519.js.map": "/Multi-Turn-Chatbot/static/js/main.cb766519.js.map"
   },
   "entrypoints": [
     "static/css/main.cef3e25d.css",
-    "static/js/main.d76a8639.js"
+    "static/js/main.cb766519.js"
   ]
 }
