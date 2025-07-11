@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+require('dotenv').config();
+const API_BASE_URL = process.env.REACT_APP_API_URL || '';
 
 const App = () => {
     const [value, setValue] = useState("");
     const [error, setError] = useState("");
     const [chatHistory, setChatHistory] = useState([]);
-    const API_BASE_URL = process.env.REACT_APP_API_URL || '';
 
     const getResponse = async () => {
         if (!value) {
