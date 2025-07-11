@@ -32,8 +32,8 @@ app.post('/api/gemini', async (req, res) => {
     res.send(text);
 });
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+app.get('/', (req, res) => {
+    res.send('✅ Gemini backend is up and running!');
 });
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
