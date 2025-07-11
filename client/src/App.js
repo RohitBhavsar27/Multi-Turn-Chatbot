@@ -13,17 +13,16 @@ const App = () => {
             return;
         }
         try {
-            const options = {
+            const response = await fetch(`${API_BASE_URL}/api/gemini`, {
                 method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
                 body: JSON.stringify({
                     history: chatHistory,
                     message: value,
                 }),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            };
-            const response = await fetch(`${API_BASE_URL}/api/gemini`, options);
+            });
             const data = await response.text();
             console.log(data);
             setChatHistory((oldChatHistory) => [
