@@ -1,15 +1,14 @@
-const PORT = process.env.PORT || 8000;
 const express = require('express');
-const path = require('path');
 const cors = require('cors');
-const app = express();
-
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+require('dotenv').config();
+
+const app = express();
+const PORT = process.env.PORT || 8000;
 
 // ✅ Allow only your frontend's domain (onRender.com)
-const allowedOrigins = ['https://gemini-clone--q5ix.onrender.com'];
+const allowedOrigins = ['https://multi-turn-chatbot.onrender.com'];
 
 app.use(cors({
     origin: function (origin, callback) {
@@ -23,9 +22,8 @@ app.use(cors({
 }));
 
 app.use(express.json());
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-}
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY); // ✅ Use GEMINI_API_KEY here (not REACT_APP_...)
 
 app.post('/api/gemini', async (req, res) => {
     console.log(req.body.history);
