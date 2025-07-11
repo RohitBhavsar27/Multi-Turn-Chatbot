@@ -8,18 +8,20 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 // ✅ Allow only your frontend's domain (onRender.com)
-const allowedOrigins = ['https://multi-turn-chatbot.onrender.com'];
+// const allowedOrigins = ['https://multi-turn-chatbot.onrender.com'];
 
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    methods: ['GET', 'POST'],
-}));
+// app.use(cors({
+//     origin: function (origin, callback) {
+//         if (!origin || allowedOrigins.includes(origin)) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('Not allowed by CORS'));
+//         }
+//     },
+//     methods: ['GET', 'POST'],
+// }));
+
+app.use(cors());
 
 app.use(express.json());
 
