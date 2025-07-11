@@ -1,0 +1,22 @@
+
+services:
+  - type: web
+    name: multi-turn-chatbot-server
+    env: node
+    plan: free
+    region: oregon
+    rootDir: server
+    buildCommand: "npm install"
+    startCommand: "node server.js"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - fromGroup: gemini-api-key
+  - type: web
+    name: multi-turn-chatbot-client
+    plan: free
+    region: oregon
+    env: static
+    rootDir: client
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: ./build
