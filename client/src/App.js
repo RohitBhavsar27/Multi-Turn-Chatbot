@@ -4,6 +4,7 @@ const App = () => {
     const [value, setValue] = useState("");
     const [error, setError] = useState("");
     const [chatHistory, setChatHistory] = useState([]);
+    const API_BASE_URL = process.env.REACT_APP_API_URL || '';
 
     const getResponse = async () => {
         if (!value) {
@@ -21,7 +22,7 @@ const App = () => {
                     "Content-Type": "application/json",
                 },
             };
-            const response = await fetch("http://localhost:8000/api/gemini", options);
+            const response = await fetch(`${API_BASE_URL}/api/gemini`, options);
             const data = await response.text();
             console.log(data);
             setChatHistory((oldChatHistory) => [

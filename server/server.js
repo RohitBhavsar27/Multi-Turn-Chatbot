@@ -4,17 +4,28 @@ const path = require('path');
 const cors = require('cors');
 const app = express();
 
-app.use(cors());
+const { GoogleGenerativeAI } = require('@google/generative-ai');
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+// ✅ Allow only your frontend's domain (onRender.com)
+const allowedOrigins = ['https://gemini-clone--q5ix.onrender.com'];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST'],
+}));
+
 app.use(express.json());
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
-
-const { GoogleGenerativeAI } = require('@google/generative-ai');
-
-const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
-
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
 app.post('/api/gemini', async (req, res) => {
     console.log(req.body.history);
